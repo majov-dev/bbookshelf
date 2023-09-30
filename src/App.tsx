@@ -1,8 +1,8 @@
-import { Typography } from '@mui/material'
+import Router from './Router'
 function App() {
   return (
     <div className='App'>
-      <Typography variant="h1" color="primary">BBookshelf</Typography>
+      <Router />
     </div>
   )
 }
