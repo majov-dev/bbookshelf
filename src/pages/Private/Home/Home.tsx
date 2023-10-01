@@ -4,10 +4,7 @@ const Home = () => {
   return (
     <>
       <Typography variant="h1" color="primary">
-        BBookshel
-      </Typography>
-      <Typography variant="h2" color="secondary">
-        Home
+        HOME
       </Typography>
     </>
   );

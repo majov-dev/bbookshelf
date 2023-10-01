@@ -10,14 +10,6 @@ const Private: React.FC<PrivateProps> = ({
 }: PrivateProps): ReactElement => {
   const [randomBoolean, setRandomBoolean] = useState<Boolean>(true);
 
-  useEffect(() => {
-    const generateRandomBoolean = () => {
-      return Math.random() < 0.5;
-    };
-
-    setRandomBoolean(generateRandomBoolean());
-  }, []);
-
   return randomBoolean ? <Page /> : <Access />;
 };
 
