@@ -14,11 +14,6 @@ const Temporary = ({ children }: TemporaryProps) => {
       anchor="left"
       open={open}
       onClose={toggleDrawer}
-      sx={{
-        display: {
-          md: "none",
-        },
-      }}
     >
       {children}
     </Drawer>

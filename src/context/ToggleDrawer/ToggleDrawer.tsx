@@ -19,7 +19,7 @@ interface ToggleDrawerProps {
 }
 
 const ToggleDrawer = ({ children }: ToggleDrawerProps) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
     console.log('toggleDrawer', open)

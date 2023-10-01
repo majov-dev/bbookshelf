@@ -14,6 +14,9 @@ const Navbar = () => {
           size="large"
           color="inherit"
           onClick={toggleDrawer}
+          sx={{
+            display: { md: "none" },
+          }}
         >
           <Menu />
         </IconButton>
