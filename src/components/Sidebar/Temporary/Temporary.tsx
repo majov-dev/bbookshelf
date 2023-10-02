@@ -1,6 +1,6 @@
 import { Drawer, Button } from "@mui/material";
 import { ReactNode, useContext } from "react";
-import { SidebarContext } from "../../../context/ToggleDrawer/ToggleDrawer";
+import { SidebarContext } from "../../../context/ToggleDrawer";
 
 interface TemporaryProps {
   children: ReactNode;

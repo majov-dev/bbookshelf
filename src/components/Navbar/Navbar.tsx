@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
-import { SidebarContext } from "../../context/ToggleDrawer/ToggleDrawer";
+import { SidebarContext } from "../../context/ToggleDrawer";
 import { Link } from "react-router-dom";
 import { MouseEvent } from "react"; // Importe o tipo MouseEvent de "react"
 
@@ -88,7 +88,7 @@ const Navbar = () => {
             <MenuItem onClick={handleClose}>{menuItem.label}</MenuItem>
           </Typography>
         ))}
-        
+
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </>
