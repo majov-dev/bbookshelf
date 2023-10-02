@@ -33,16 +33,20 @@ const Reader: React.FC = () => {
   const path = "/src/assets/pdf/";
 
   useEffect(() => {
-    const others = user?.keepReading.reading.filter(
+    const othersReadings = user?.keepReading.reading.filter(
+      (livro) => livro.id !== bookSelected?.id
+    );
+
+    const othersBooks = user?.keepReading.books.filter(
       (livro) => livro.id !== bookSelected?.id
     );
 
     setUser({
       ...(user as IUser),
       keepReading: {
-        books: user?.keepReading.books as IDataBook[],
+        books: [...(othersBooks as IDataBook[]), bookSelected as IDataBook ],
         reading: [
-          ...(others as IReading[]),
+          ...(othersReadings as IReading[]),
           { id: bookSelected?.id as string, pag: pageNum },
         ],
       },
