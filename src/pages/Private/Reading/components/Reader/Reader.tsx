@@ -137,7 +137,7 @@ const Reader: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(`/prereading/${bookSelected?.id}`);
+    navigate(`/prereading`);
   };
 
   return (
