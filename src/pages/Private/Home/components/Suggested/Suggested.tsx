@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { LibaryContext } from "../../../../../context/Libary";
 import BookList from "../../../../../components/BookList/BookList";
+import { useLibary } from "../../../../../hooks/useLibary";
 
 const Suggested = () => {
-  const { collection, searched } = useContext(LibaryContext);
+  const { collection, searched } = useLibary();
 
   const suggested = searched.length ? searched : collection;
 

@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardContent,
   CardMedia,
@@ -21,7 +22,12 @@ const Book = ({ data }: { data: IDataBook }) => {
   return (
     <Card
       onClick={handleCardClick}
-      sx={{ maxWidth: 256, minHeight: 570, position: "relative", margin: 0 }}
+      sx={{
+        maxWidth: 256,
+        minHeight: 570,
+        position: "relative",
+        cursor: "pointer",
+      }}
     >
       <CardMedia
         component="img"
