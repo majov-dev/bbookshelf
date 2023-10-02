@@ -78,8 +78,9 @@ const Navbar = () => {
           "aria-labelledby": "user-button avatar-user",
         }}
       >
-        {menuArray.map((menuItem) => (
+        {menuArray.map((menuItem, index) => (
           <Typography
+            key={index}
             component={Link}
             to={menuItem.path}
             color={"inherit"}
