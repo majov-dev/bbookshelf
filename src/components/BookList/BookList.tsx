@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import Carousel from "../../../../../components/Carousel/Carousel";
-import Book from "../../../../../components/Book/Book";
+import Carousel from "../Carousel/Carousel";
+import Book from "../Book/Book";
 
 const BookList = ({ list, title}: { list: IDataBook[], title?:string }) => {
   return (

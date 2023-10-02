@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { LibaryContext } from "../../../../../context/Libary";
-import BookList from "../BookList/BookList";
+import BookList from "../../../../../components/BookList/BookList";
 
 const Suggested = () => {
   const { collection, searched } = useContext(LibaryContext);
