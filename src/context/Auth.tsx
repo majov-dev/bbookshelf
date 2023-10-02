@@ -1,0 +1,79 @@
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { UsersContext } from "./Users";
+import { UserContext } from "./User";
+
+export const AuthContext = createContext({});
+
+export const Auth = ({ children }: { children: React.ReactNode }) => {
+  const { users, setUsers } = useContext(UsersContext);
+  const { user, setUser } = useContext(UserContext);
+
+  const signin = (login: IUserLogin) => {
+    const user = users.find((user) => user?.login.email === login.email);
+
+    if (user) {
+      if (user.login.password === login.password) {
+        setUser(user);
+        return true;
+      }
+
+      return false;
+    }
+  };
+
+  const signup = (name: string, login: IUserLogin) => {
+    try {
+      const id = uuidv4();
+
+      const newUser: IUser = {
+        id,
+        name,
+        login,
+        favorites: { books: [], bookIds: [] },
+        keepReading: { books: [], reading: [] },
+      };
+
+      const findUser = users?.find((user) => user?.login.email === login.email);
+
+      if (findUser) {
+        throw Error("Já existe um usuário para esse e-mail.");
+      } else {
+        setUsers([...users, newUser]);
+      }
+      return {
+        success: true,
+        message:
+          "Usuário cadastrado com sucesso! Faço seu email usando o e-mail e senha cadastrados.",
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
+  };
+
+  //   const excluir = (email, password) => {
+  //     if (acessar(email, password)) {
+  //       const usuariosAtualizados = usuarios.filter(
+  //         (usuario) => usuario.email !== email
+  //       );
+  //       setUsers(usuariosAtualizados);
+
+  //       return true;
+  //     }
+
+  //     return false;
+  //   };
+
+  const signout = () => {
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ signed: !!user, signin, signup, signout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
