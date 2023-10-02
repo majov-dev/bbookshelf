@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         path: "prereading",
         element:<PreReading />
       },
+      {
+        path: "reading",
+        element:<Reading />
+      },
     ],
   },
 ]);
