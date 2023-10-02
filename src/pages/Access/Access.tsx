@@ -23,6 +23,7 @@ import { AuthContext } from "../../context/Auth";
 
 const Access = () => {
   const { signup, signin } = useContext(AuthContext);
+  const delay = 1000;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,6 +40,13 @@ const Access = () => {
   const [inProgress, setInProgress] = useState(false);
 
   const [openLoading, setOpenLoading] = useState(false);
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenAlertMessage(false);
+  };
 
   const handleOpenRegistration = () => {
     setIsLogin(false);
@@ -74,12 +82,13 @@ const Access = () => {
     setInProgress(true);
 
     setTimeout(() => {
-      signup(name, { email, password });
+      const registration = signup(name, { email, password });
+
       setIsLogin(true);
-      handleRegistered();
+      handleRegistered(registration.success, registration.message);
       setInProgress(false);
       setOpenLoading(false);
-    }, 2000);
+    }, delay);
   };
 
   const handleSignin = () => {
@@ -94,7 +103,7 @@ const Access = () => {
         handleLoginError();
       }
       setOpenLoading(false);
-    }, 2000);
+    }, delay);
   };
 
   const handleLoginError = () => {
@@ -103,11 +112,10 @@ const Access = () => {
     setOpenAlertMessage(true);
   };
 
-  const handleRegistered = () => {
-    setMessageType("success");
-    setAlertMessage(
-      "User registered successfully! Log in using the email and password you provided."
-    );
+  const handleRegistered = (success: boolean, message: string) => {
+    const type = success ? "success" : "error";
+    setMessageType(type);
+    setAlertMessage(message);
     setOpenAlertMessage(true);
     setAlertDuration(6000);
   };
@@ -339,11 +347,11 @@ const Access = () => {
           </Box>
         </Container>
       </Modal>
-
       <Snackbar
         open={openAlertMessage}
         autoHideDuration={alertDuration}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={handleClose}
       >
         <Alert severity={messageType} variant="filled" sx={{ width: "100%" }}>
           {alertMessage}

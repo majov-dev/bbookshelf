@@ -6,7 +6,10 @@ import { UserContext } from "./User";
 interface IAuth {
   signed: boolean;
   signin: (login: IUserLogin) => boolean;
-  signup: (name:string, login:IUserLogin) => { success: boolean; message: string };
+  signup: (
+    name: string,
+    login: IUserLogin
+  ) => { success: boolean; message: string };
   signout: () => void;
 }
 
@@ -54,14 +57,14 @@ export const Auth = ({ children }: { children: React.ReactNode }) => {
       const findUser = users?.find((user) => user?.login.email === login.email);
 
       if (findUser) {
-        throw Error("Já existe um usuário para esse e-mail.");
+        throw Error("A user with this email already exists.");
       } else {
         setUsers([...users, newUser]);
       }
       return {
         success: true,
         message:
-          "Usuário cadastrado com sucesso! Faço seu email usando o e-mail e senha cadastrados.",
+          "User registered successfully! Log in using the provided email and password.",
       };
     } catch (error: any) {
       return {

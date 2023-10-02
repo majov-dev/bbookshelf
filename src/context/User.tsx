@@ -25,40 +25,6 @@ const User = ({ children }: { children: React.ReactNode }) => {
     }
   }, [user]);
 
-  const insert = (name: string, login: IUserLogin) => {
-    try {
-      const id = uuidv4();
-
-      const newUser: IUser = {
-        id,
-        name,
-        login,
-        favorites: { books: [], bookIds: [] },
-        keepReading: { books: [], reading: [] },
-      };
-
-      const existeUsuario = users?.find(
-        (usr) => usr?.login.email === login.email
-      );
-
-      if (existeUsuario) {
-        throw Error("Já existe um usuário para esse e-mail.");
-      } else {
-        setUsers([...users, newUser]);
-      }
-      return {
-        success: true,
-        message:
-          "Usuário cadastrado com sucesso! Faço seu email usando o e-mail e senha cadastrados.",
-      };
-    } catch (error: any) {
-      return {
-        success: false,
-        message: error.message,
-      };
-    }
-  };
-
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

@@ -1,6 +1,7 @@
 import {
   Box,
   IconButton,
+  Link as MuiLink,
   List,
   ListItem,
   ListItemButton,
@@ -10,9 +11,19 @@ import {
 } from "@mui/material";
 import Permanent from "./Permanent/Permanent";
 import Temporary from "./Temporary/Temporary";
-import { Home } from "@mui/icons-material";
+import { AccountBox, GridOn, Home } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { SidebarContext } from "../../context/ToggleDrawer";
+import { useContext } from "react";
+
+const menuItems = [
+  { text: "Home", icon: <Home />, link: "/" },
+  { text: "Collection", icon: <GridOn/>, link: "/collection" },
+  { text: "Profile", icon: <AccountBox />, link: "/profile" },
+];
 
 const Sidebar = () => {
+  const { toggleDrawer } = useContext(SidebarContext);
   const content = (
     <Box sx={{ minWidth: "240px", mt: 4 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -21,14 +32,22 @@ const Sidebar = () => {
         </Typography>
       </Box>
       <List>
-        <ListItem key={"home"} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="HOME"></ListItemText>
-          </ListItemButton>
-        </ListItem>
+        {menuItems.map((item, index) => (
+          <MuiLink
+            component={Link}
+            to={item.link}
+            underline="none"
+            color="inherit"
+            key={index}
+          >
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={toggleDrawer}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          </MuiLink>
+        ))}
       </List>
     </Box>
   );

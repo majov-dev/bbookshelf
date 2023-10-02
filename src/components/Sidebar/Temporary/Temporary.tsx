@@ -14,6 +14,12 @@ const Temporary = ({ children }: TemporaryProps) => {
       anchor="left"
       open={open}
       onClose={toggleDrawer}
+      sx={{
+        display:{
+          xs:'block',
+          md:'none',
+        }
+      }}
     >
       {children}
     </Drawer>

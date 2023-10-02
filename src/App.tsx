@@ -12,11 +12,10 @@ function App() {
           <Users>
             <User>
               <Auth>
-                
+                <Router />
               </Auth>
             </User>
           </Users>
-          <Router />
         </Libary>
       </Theme>
     </div>

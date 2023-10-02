@@ -16,9 +16,11 @@ import { useContext, useState } from "react";
 import { SidebarContext } from "../../context/ToggleDrawer";
 import { Link } from "react-router-dom";
 import { MouseEvent } from "react"; // Importe o tipo MouseEvent de "react"
+import { AuthContext } from "../../context/Auth";
 
 const Navbar = () => {
   const { toggleDrawer } = useContext(SidebarContext);
+  const { signout } = useContext(AuthContext);
 
   const [userMenu, setUserMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(userMenu);
@@ -90,7 +92,7 @@ const Navbar = () => {
           </Typography>
         ))}
 
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={signout}>Logout</MenuItem>
       </Menu>
     </>
   );
