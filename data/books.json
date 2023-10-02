@@ -1,6 +1,6 @@
 [
   {
-    "id": "01",
+    "id": "1",
     "image": "livr-o-feiticeiro-de-terramar.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRzJY.livr-o-feiticeiro-de-terramar.jpg",
     "name": "O feiticeiro de Terramar (Ciclo Terramar – Livro 1)",
@@ -10,7 +10,7 @@
     "genre": "Fantasia"
   },
   {
-    "id": "02",
+    "id": "2",
     "image": "livro-a-culpa-e-das-estrelas.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRxEy.livro-a-culpa-e-das-estrelas.jpg",
     "name": "A culpa é das estrelas",
@@ -20,7 +20,7 @@
     "genre": "Romance"
   },
   {
-    "id": "03",
+    "id": "3",
     "image": "livro-a-selecao-livro-amazon-1-1.jpg",
     "urlImage": "  https://i.im.ge/2023/09/24/NDRZ8X.livro-a-selecao-livro-amazon-1-1.jpg",
     "name": "A Seleção: 1",
@@ -30,7 +30,7 @@
     "genre": "Aventura"    
   },
   {
-    "id": "04",
+    "id": "4",
     "image": "livro-o-colecionador.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDR4uq.livro-o-colecionador.jpg",
     "name": "O Colecionador",
@@ -40,7 +40,7 @@
     "genre": "Romance"
   },
   {
-    "id": "05",
+    "id": "5",
     "image": "livro-a-ultima-festa.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRW59.livro-a-ultima-festa.jpg",
     "name": "A última festa",
@@ -50,7 +50,7 @@
     "genre": "Suspense"
   },
   {
-    "id": "06",
+    "id": "6",
     "image": "livro-aventuras-na-amazonia.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRkxM.livro-aventuras-na-amazonia.jpg",
     "name": "Aventuras na Amazônia. Uma Brilhante Aventura Biológica!",
@@ -60,7 +60,7 @@
     "genre": "Infantil"
   },
   {
-    "id": "07",
+    "id": "7",
     "image": "livro-biblioteca-da-meia-noite.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRRrK.livro-biblioteca-da-meia-noite.jpg",
     "name": "A Biblioteca da Meia-Noite",
@@ -70,7 +70,7 @@
     "genre": "Ficcção Científica"
   },
   {
-    "id": "08",
+    "id": "8",
     "image": "livro-cidades-dos-ossos.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRgfF.livro-cidades-dos-ossos.jpg",
     "name": "Cidade dos ossos (Vol. 1 Os Instrumentos Mortais)",
@@ -80,7 +80,7 @@
     "genre": "Fantasia"
   },
   {
-    "id": "09",
+    "id": "9",
     "image": "livro-e-assim-que-começa.jpg",
     "urlImage": "https://i.im.ge/2023/09/24/NDRVM8.livro-e-assim-que-comeca.jpg",
     "name": "É assim que começa (Vol. 2 É assim que acaba)",
