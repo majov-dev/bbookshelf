@@ -13,12 +13,14 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
-import { SidebarContext } from "../../context/ToggleDrawer/ToggleDrawer";
+import { SidebarContext } from "../../context/ToggleDrawer";
 import { Link } from "react-router-dom";
 import { MouseEvent } from "react"; // Importe o tipo MouseEvent de "react"
+import { AuthContext } from "../../context/Auth";
 
 const Navbar = () => {
   const { toggleDrawer } = useContext(SidebarContext);
+  const { signout } = useContext(AuthContext);
 
   const [userMenu, setUserMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(userMenu);
@@ -78,8 +80,9 @@ const Navbar = () => {
           "aria-labelledby": "user-button avatar-user",
         }}
       >
-        {menuArray.map((menuItem) => (
+        {menuArray.map((menuItem, index) => (
           <Typography
+            key={index}
             component={Link}
             to={menuItem.path}
             color={"inherit"}
@@ -88,8 +91,8 @@ const Navbar = () => {
             <MenuItem onClick={handleClose}>{menuItem.label}</MenuItem>
           </Typography>
         ))}
-        
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+
+        <MenuItem onClick={signout}>Logout</MenuItem>
       </Menu>
     </>
   );
