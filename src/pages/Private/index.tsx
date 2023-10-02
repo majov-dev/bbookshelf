@@ -1,16 +1,11 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { useContext } from "react";
 import Access from "../Access/Access";
+import { AuthContext } from "../../context/Auth";
+import Logged from "../../layouts/Logged";
 
-interface PrivateProps {
-  Page: React.ComponentType;
-}
-
-const Private: React.FC<PrivateProps> = ({
-  Page,
-}: PrivateProps): ReactElement => {
-  const [randomBoolean, setRandomBoolean] = useState<Boolean>(true);
-
-  return randomBoolean ? <Page /> : <Access />;
+const Private = () => {
+  const { signed } = useContext(AuthContext);
+  return signed ? <Logged /> : <Access />;
 };
 
 export default Private;

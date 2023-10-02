@@ -9,7 +9,7 @@ import Collection from "../pages/Private/Collection/Collection";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Private Page={Logged}/>,
+    element: <Private />,
     errorElement: <NotFound />,
     children: [
       {

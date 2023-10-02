@@ -7,7 +7,7 @@ export const UserContext = createContext<{
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 }>({ user: null, setUser: () => {} });
 
-const Users = ({ children }: { children: React.ReactNode }) => {
+const User = ({ children }: { children: React.ReactNode }) => {
   const { users, setUsers } = useContext(UsersContext);
 
   const [user, setUser] = useState<IUser | null>(() => {
@@ -17,9 +17,7 @@ const Users = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (user) {
-      const others = users.filter(
-        (user) => user.login.email !== user.login.email
-      );
+      const others = users.filter((usr) => usr.login.email !== user.login.email);
       setUsers([...others, user]);
       localStorage.setItem("user", JSON.stringify(user));
     } else {
@@ -40,7 +38,7 @@ const Users = ({ children }: { children: React.ReactNode }) => {
       };
 
       const existeUsuario = users?.find(
-        (user) => user?.login.email === login.email
+        (usr) => usr?.login.email === login.email
       );
 
       if (existeUsuario) {
@@ -68,4 +66,4 @@ const Users = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Users;
+export default User;

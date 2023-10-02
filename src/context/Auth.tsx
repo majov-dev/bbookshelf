@@ -3,7 +3,25 @@ import { v4 as uuidv4 } from "uuid";
 import { UsersContext } from "./Users";
 import { UserContext } from "./User";
 
-export const AuthContext = createContext({});
+interface IAuth {
+  signed: boolean;
+  signin: (login: IUserLogin) => boolean;
+  signup: (name:string, login:IUserLogin) => { success: boolean; message: string };
+  signout: () => void;
+}
+
+export const AuthContext = createContext<IAuth>({
+  signed: false,
+  signin: function (): boolean {
+    throw new Error("Function not implemented.");
+  },
+  signup: function (): { success: boolean; message: string } {
+    throw new Error("Function not implemented.");
+  },
+  signout: function (): void {
+    throw new Error("Function not implemented.");
+  },
+});
 
 export const Auth = ({ children }: { children: React.ReactNode }) => {
   const { users, setUsers } = useContext(UsersContext);
@@ -17,9 +35,8 @@ export const Auth = ({ children }: { children: React.ReactNode }) => {
         setUser(user);
         return true;
       }
-
-      return false;
     }
+    return false;
   };
 
   const signup = (name: string, login: IUserLogin) => {
