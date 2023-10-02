@@ -1,12 +1,11 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import Suggested from "./components/Suggested/Suggested";
 
 const Home = () => {
   return (
-    <>
-      <Typography variant="h1" color="primary">
-        HOME
-      </Typography>
-    </>
+    <Box className="home" color="secondary.main">
+      <Suggested />
+    </Box>
   );
 };
 
