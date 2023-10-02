@@ -1,13 +1,27 @@
-import { Typography } from '@mui/material'
-import { Outlet } from 'react-router-dom'
+import { Box, Container } from "@mui/material";
+
+import { Outlet } from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import ToggleDrawer from "../../context/ToggleDrawer/ToggleDrawer";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Logged = () => {
-    return (
-        <>
-            <Typography variant="h2" color="secondary">Logged Layout</Typography>
-            <Outlet/>
-        </>
-    )
-}
+  return (
+    <ToggleDrawer>
+      <Sidebar />
+      <Box
+        sx={{
+          width: { md: `calc(100% - 240px)` },
+          ml: { md: `240px` },
+        }}
+      >
+        <Navbar />
+        <Container maxWidth="xl">
+          <Outlet />
+        </Container>
+      </Box>
+    </ToggleDrawer>
+  );
+};
 
-export default Logged
+export default Logged;
