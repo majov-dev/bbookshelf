@@ -12,7 +12,8 @@ const Permanent = ({children}:PermanentProps) => {
         xs:'none',
         md:'block',
       }
-    }}>
+    }}
+    >
         {children}
     </Drawer>
   )

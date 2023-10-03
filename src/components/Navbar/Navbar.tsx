@@ -2,13 +2,16 @@ import {
   Menu as MenuIcon,
   KeyboardArrowUp,
   KeyboardArrowDown,
+  SearchOutlined,
 } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
   IconButton,
+  InputAdornment,
   Menu,
   MenuItem,
+  TextField,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -33,6 +36,11 @@ const Navbar = () => {
     setUserMenu(null);
   };
 
+  const handlePesquisa = (event) => {
+    setPesquisa(event.target.value);
+};
+
+
   const menuArray = [
     { label: "Profile", path: "profile" },
     { label: "Collection", path: "collection" },
@@ -56,6 +64,23 @@ const Navbar = () => {
           <Typography onClick={handleMenu} variant="h6" sx={{ flexGrow: 1 }}>
             BBookshelf
           </Typography>
+          <TextField
+            id="search"
+            size="small"
+            label=""
+            variant="outlined"
+            placeholder="Pesquisar"
+            sx={{ display: { xs: "none", md: "block" } }}
+            value={search}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchOutlined/>
+                </InputAdornment>
+              ),
+            }}
+            onChange={handleSearch}
+          />
           <Avatar />
           <IconButton
             size="small"
