@@ -8,15 +8,51 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useLibary } from "../../hooks/useLibary";
+import { Bookmark, BookmarkBorder } from "@mui/icons-material";
+import { useUser } from "../../hooks/userUser";
 
 const Book = ({ data }: { data: IDataBook }) => {
   const navigate = useNavigate();
   const { setBookSelected } = useLibary();
+  const { user, setUser } = useUser();
+
+  const favorites = new Set(user?.favorites.bookIds);
+
+  const isFavorite = favorites.has(Number(data.id));
 
   const handleCardClick = () => {
     setBookSelected(data);
 
     navigate(`/prereading`);
+  };
+  const handleFavoriteClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+
+    if (isFavorite) {
+      const othesFavoriteIds = user?.favorites.bookIds.filter(
+        (id) => id !== Number(data.id)
+      );
+
+      const othesFavoriteBooks = user?.favorites.books.filter(
+        (book) => book.id !== data.id
+      );
+
+      setUser({
+        ...(user as IUser),
+        favorites: {
+          books: [...(othesFavoriteBooks as IDataBook[])],
+          bookIds: [...(othesFavoriteIds as number[])],
+        },
+      });
+    } else {
+      setUser({
+        ...(user as IUser),
+        favorites: {
+          books: [...(user?.favorites.books as IDataBook[]), data],
+          bookIds: [...(user?.favorites.bookIds as number[]), Number(data.id)],
+        },
+      });
+    }
   };
 
   return (
@@ -55,7 +91,14 @@ const Book = ({ data }: { data: IDataBook }) => {
           bottom: "8px",
           right: "8px",
         }}
-      ></IconButton>
+        onClick={handleFavoriteClick}
+      >
+        {isFavorite ? (
+          <Bookmark color="secondary" />
+        ) : (
+          <BookmarkBorder color="primary" />
+        )}
+      </IconButton>
     </Card>
   );
 };
