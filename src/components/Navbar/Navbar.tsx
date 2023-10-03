@@ -7,23 +7,29 @@ import {
 import {
   AppBar,
   Avatar,
+  Box,
   IconButton,
   InputAdornment,
   Menu,
   MenuItem,
-  TextField,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../../context/ToggleDrawer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MouseEvent } from "react"; // Importe o tipo MouseEvent de "react"
 import { AuthContext } from "../../context/Auth";
-
+import { Search } from "../Search/Search.styled";
+import { useLibary } from "../../hooks/useLibary";
 const Navbar = () => {
   const { toggleDrawer } = useContext(SidebarContext);
   const { signout } = useContext(AuthContext);
+  const { search } = useLibary();
+
+  const location = useLocation();
+
+  const [searchText, setSearchText] = useState("");
 
   const [userMenu, setUserMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(userMenu);
@@ -36,10 +42,13 @@ const Navbar = () => {
     setUserMenu(null);
   };
 
-  const handlePesquisa = (event) => {
-    setPesquisa(event.target.value);
-};
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+  };
 
+  useEffect(() => {
+    search(searchText);
+  }, [searchText]);
 
   const menuArray = [
     { label: "Profile", path: "profile" },
@@ -61,26 +70,31 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography onClick={handleMenu} variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography onClick={handleMenu} variant="h6">
             BBookshelf
           </Typography>
-          <TextField
-            id="search"
-            size="small"
-            label=""
-            variant="outlined"
-            placeholder="Pesquisar"
-            sx={{ display: { xs: "none", md: "block" } }}
-            value={search}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchOutlined/>
-                </InputAdornment>
-              ),
-            }}
-            onChange={handleSearch}
-          />
+          <Box sx={{ flexGrow: 1 }}></Box>
+          {location.pathname === "/collection" && (
+            <Search
+              id="search"
+              size="small"
+              label=""
+              variant="outlined"
+              placeholder="Pesquisar"
+              sx={{ display: { xs: "none", md: "block", bgcolor: "white" } }}
+              value={searchText}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchOutlined />
+                  </InputAdornment>
+                ),
+              }}
+              onChange={handleSearch}
+            />
+          )}
+
+          <Box sx={{ flexGrow: 1 }}></Box>
           <Avatar />
           <IconButton
             size="small"
@@ -95,6 +109,7 @@ const Navbar = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
+
       <Menu
         id="user-menu"
         anchorEl={userMenu}

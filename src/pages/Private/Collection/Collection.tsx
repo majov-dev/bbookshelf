@@ -5,7 +5,7 @@ import { useLibary } from "../../../hooks/useLibary";
 const Collection = ({}) => {
   const { collection, searched } = useLibary();
 
-  const books = searched.length ? searched : collection;
+  const books = searched ? searched : collection;
 
   return (
     <Grid

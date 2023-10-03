@@ -24,9 +24,7 @@ const menuItems = [
 
 const Sidebar = () => {
   const { toggleDrawer } = useContext(SidebarContext);
-  const location = useLocation();
-
-  console.log(location.pathname)
+  
   const content = (
     <Box sx={{ minWidth: "240px", mt: 4 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>

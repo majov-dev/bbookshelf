@@ -4,7 +4,7 @@ import { useLibary } from "../../../../../hooks/useLibary";
 const Suggested = () => {
   const { collection, searched } = useLibary();
 
-  const suggested = searched.length ? searched : collection;
+  const suggested = searched ? searched : collection;
 
   return (
     <BookList list={suggested} title="Suggested"/>
