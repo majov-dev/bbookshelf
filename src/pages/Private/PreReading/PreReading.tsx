@@ -55,6 +55,7 @@ const PreReading = () => {
     }})
 
     handleCloseModal();
+    handleGoBack();
   }
 
   return (

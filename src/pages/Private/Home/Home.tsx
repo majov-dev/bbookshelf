@@ -5,8 +5,8 @@ import KeepReading from "./components/KeepReading/KeepReading";
 const Home = () => {
   return (
     <Box className="home" color="secondary.main">
-      <Suggested />
       <KeepReading />
+      <Suggested />
     </Box>
   );
 };
