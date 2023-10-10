@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Logged from "../layouts/Logged";
 import NotFound from "../pages/error/NotFound.tsx/NotFound";
 import Private from "../pages/Private";
 import Home from "../pages/Private/Home/Home";
 import Profile from "../pages/Private/Profile/Profile";
 import Collection from "../pages/Private/Collection/Collection";
+import PreReading from "../pages/Private/PreReading/PreReading";
+import Reading from "../pages/Private/Reading/Reading";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,16 @@ const router = createBrowserRouter([
         element:<Profile />
       },
       {
-        path: "Collection",
+        path: "collection",
         element:<Collection />
+      },
+      {
+        path: "prereading",
+        element:<PreReading />
+      },
+      {
+        path: "reading",
+        element:<Reading />
       },
     ],
   },

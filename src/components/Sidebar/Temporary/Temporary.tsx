@@ -14,6 +14,7 @@ const Temporary = ({ children }: TemporaryProps) => {
       anchor="left"
       open={open}
       onClose={toggleDrawer}
+      disableScrollLock
       sx={{
         display:{
           xs:'block',

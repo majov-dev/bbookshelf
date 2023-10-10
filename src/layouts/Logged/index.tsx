@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ToggleDrawer from "../../context/ToggleDrawer";
 import Navbar from "../../components/Navbar/Navbar";

@@ -12,18 +12,19 @@ import {
 import Permanent from "./Permanent/Permanent";
 import Temporary from "./Temporary/Temporary";
 import { AccountBox, GridOn, Home } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SidebarContext } from "../../context/ToggleDrawer";
 import { useContext } from "react";
 
 const menuItems = [
   { text: "Home", icon: <Home />, link: "/" },
-  { text: "Collection", icon: <GridOn/>, link: "/collection" },
+  { text: "Collection", icon: <GridOn />, link: "/collection" },
   { text: "Profile", icon: <AccountBox />, link: "/profile" },
 ];
 
 const Sidebar = () => {
   const { toggleDrawer } = useContext(SidebarContext);
+  
   const content = (
     <Box sx={{ minWidth: "240px", mt: 4 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>

@@ -10,9 +10,7 @@ const BookList = ({ list, title}: { list: IDataBook[], title?:string }) => {
         {list.map((book, index) => (
           <Book
             key={index}
-            urlImage={book.urlImage}
-            titulo={book.name}
-            autor={book.description}
+            data={book}
           />
         ))}
       </Carousel>

@@ -7,7 +7,7 @@ interface SidebarContextType {
 
 const DEFAULT_VALUE = {
   open: true,
-  toggleDrawer: () => {console.log('DEFAULT_VALUE')},
+  toggleDrawer: () => {},
 };
 
 export const SidebarContext = createContext<SidebarContextType>(
@@ -22,7 +22,6 @@ const ToggleDrawer = ({ children }: ToggleDrawerProps) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
-    console.log('toggleDrawer', open)
     setOpen(!open);
   };
 

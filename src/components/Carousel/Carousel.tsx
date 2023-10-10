@@ -36,7 +36,7 @@ const Carousel = ({ children }: { children: React.ReactNode }) => {
   return (
     <Swiper
       modules={[Navigation]}
-      style={{ padding: "32px 0" }}
+      style={{ paddingTop: "32px" }}
       breakpoints={getBreakpoints()}
     >
       <SwiperNvegation />
