@@ -47,7 +47,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    search(searchText);
+    if (searchText) {
+      search(searchText);
+    }
   }, [searchText]);
 
   const menuArray = [
